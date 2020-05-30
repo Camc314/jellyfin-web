@@ -168,9 +168,13 @@ define(['require', 'browser', 'layoutManager', 'appSettings', 'pluginManager', '
         context.querySelector('.chkRunAtStartup').checked = appSettings.runAtStartup();
 
         var selectTheme = context.querySelector('#selectTheme');
+        var selectLightTheme = context.querySelector('#selectLightTheme');
+        var selectDarkTheme = context.querySelector('#selectDarkTheme');
         var selectDashboardTheme = context.querySelector('#selectDashboardTheme');
 
         fillThemes(selectTheme);
+        fillThemes(selectLightTheme);
+        fillThemes(selectDarkTheme);
         fillThemes(selectDashboardTheme, true);
         loadScreensavers(context, userSettings);
         loadSoundEffects(context, userSettings);
@@ -179,9 +183,11 @@ define(['require', 'browser', 'layoutManager', 'appSettings', 'pluginManager', '
         context.querySelector('.chkDisplayMissingEpisodes').checked = user.Configuration.DisplayMissingEpisodes || false;
 
         context.querySelector('#chkThemeSong').checked = userSettings.enableThemeSongs();
+        context.querySelector('#followSystemTheme').checked = userSettings.followSystemTheme();
         context.querySelector('#chkThemeVideo').checked = userSettings.enableThemeVideos();
         context.querySelector('#chkFadein').checked = userSettings.enableFastFadein();
         context.querySelector('#chkBackdrops').checked = userSettings.enableBackdrops();
+        context.querySelector('#chkDetailsBanner').checked = userSettings.detailsBanner();
 
         context.querySelector('#selectLanguage').value = userSettings.language() || '';
         context.querySelector('.selectDateTimeLocale').value = userSettings.dateTimeLocale() || '';
@@ -190,6 +196,8 @@ define(['require', 'browser', 'layoutManager', 'appSettings', 'pluginManager', '
 
         selectDashboardTheme.value = userSettings.dashboardTheme() || '';
         selectTheme.value = userSettings.theme() || '';
+        selectLightTheme.value = userSettings.lightTheme() || '';
+        selectDarkTheme.value = userSettings.darkTheme() || '';     
 
         context.querySelector('.selectLayout').value = layoutManager.getSavedLayout() || '';
 
@@ -211,9 +219,12 @@ define(['require', 'browser', 'layoutManager', 'appSettings', 'pluginManager', '
         userSettingsInstance.dateTimeLocale(context.querySelector('.selectDateTimeLocale').value);
 
         userSettingsInstance.enableThemeSongs(context.querySelector('#chkThemeSong').checked);
+        userSettingsInstance.followSystemTheme(context.querySelector('#followSystemTheme').checked);
         userSettingsInstance.enableThemeVideos(context.querySelector('#chkThemeVideo').checked);
         userSettingsInstance.dashboardTheme(context.querySelector('#selectDashboardTheme').value);
         userSettingsInstance.theme(context.querySelector('#selectTheme').value);
+        userSettingsInstance.lightTheme(context.querySelector('#selectLightTheme').value);
+        userSettingsInstance.darkTheme(context.querySelector('#selectDarkTheme').value) ;
         userSettingsInstance.soundEffects(context.querySelector('.selectSoundEffects').value);
         userSettingsInstance.screensaver(context.querySelector('.selectScreensaver').value);
 
@@ -223,6 +234,7 @@ define(['require', 'browser', 'layoutManager', 'appSettings', 'pluginManager', '
 
         userSettingsInstance.enableFastFadein(context.querySelector('#chkFadein').checked);
         userSettingsInstance.enableBackdrops(context.querySelector('#chkBackdrops').checked);
+        userSettingsInstance.detailsBanner(context.querySelector('#chkDetailsBanner').checked);
 
         if (user.Id === apiClient.getCurrentUserId()) {
             skinManager.setTheme(userSettingsInstance.theme());
