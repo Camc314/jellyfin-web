@@ -1,7 +1,25 @@
-define(['connectionManager', 'cardBuilder', 'appSettings', 'dom', 'apphost', 'layoutManager', 'imageLoader', 'globalize', 'itemShortcuts', 'itemHelper', 'appRouter', 'scripts/imagehelper', 'paper-icon-button-light', 'emby-itemscontainer', 'emby-scroller', 'emby-button', 'css!./homesections'], function (connectionManager, cardBuilder, appSettings, dom, appHost, layoutManager, imageLoader, globalize, itemShortcuts, itemHelper, appRouter, imageHelper) {
-    'use strict';
+/* eslint-disable indent */
 
-    function getDefaultSection(index) {
+import connectionManager from 'connectionManager';
+import cardBuilder from 'cardBuilder';
+import appSettings from 'appSettings';
+import dom from 'dom';
+import appHost from 'apphost';
+import layoutManager from 'layoutManager';
+import imageLoader from 'imageLoader';
+import globalize from 'globalize';
+import itemShortcuts from 'itemShortcuts';
+import itemHelper from 'itemHelper';
+import appRouter from 'appRouter';
+import imageHelper from 'scripts/imagehelper';
+//import  from 'paper-icon-button-light';
+//import  from 'emby-itemscontainer';
+//import  from 'emby-scroller';
+//import  from 'emby-button';
+//import  from 'css!./homesections';
+
+
+    export function getDefaultSection(index) {
         switch (index) {
             case 0:
                 return 'smalllibrarytiles';
@@ -36,7 +54,7 @@ define(['connectionManager', 'cardBuilder', 'appSettings', 'dom', 'apphost', 'la
         return sections;
     }
 
-    function loadSections(elem, apiClient, user, userSettings) {
+    export function loadSections(elem, apiClient, user, userSettings) {
         return getUserViews(apiClient, user.Id).then(function (userViews) {
             var html = '';
 
@@ -85,7 +103,7 @@ define(['connectionManager', 'cardBuilder', 'appSettings', 'dom', 'apphost', 'la
         });
     }
 
-    function destroySections(elem) {
+    export function destroySections(elem) {
         var elems = elem.querySelectorAll('.itemsContainer');
         for (var i = 0; i < elems.length; i++) {
             elems[i].fetchData = null;
@@ -96,14 +114,14 @@ define(['connectionManager', 'cardBuilder', 'appSettings', 'dom', 'apphost', 'la
         elem.innerHTML = '';
     }
 
-    function pause(elem) {
+    export function pause(elem) {
         var elems = elem.querySelectorAll('.itemsContainer');
         for (var i = 0; i < elems.length; i++) {
             elems[i].pause();
         }
     }
 
-    function resume(elem, options) {
+    export function resume(elem, options) {
         var elems = elem.querySelectorAll('.itemsContainer');
         var i;
         var length;
@@ -338,7 +356,7 @@ define(['connectionManager', 'cardBuilder', 'appSettings', 'dom', 'apphost', 'la
         });
     }
 
-    function loadLibraryTiles(elem, apiClient, user, userSettings, shape, userViews, allSections) {
+    export function loadLibraryTiles(elem, apiClient, user, userSettings, shape, userViews, allSections) {
         var html = '';
         if (userViews.length) {
             html += '<h2 class="sectionTitle sectionTitle-cards padded-left">' + globalize.translate('HeaderMyMedia') + '</h2>';
@@ -805,12 +823,4 @@ define(['connectionManager', 'cardBuilder', 'appSettings', 'dom', 'apphost', 'la
         itemsContainer.parentContainer = elem;
     }
 
-    return {
-        loadLibraryTiles: loadLibraryTiles,
-        getDefaultSection: getDefaultSection,
-        loadSections: loadSections,
-        destroySections: destroySections,
-        pause: pause,
-        resume: resume
-    };
-});
+/* eslint-enable indent */
