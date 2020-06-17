@@ -12,12 +12,11 @@ import itemShortcuts from 'itemShortcuts';
 import itemHelper from 'itemHelper';
 import appRouter from 'appRouter';
 import imageHelper from 'scripts/imagehelper';
-//import  from 'paper-icon-button-light';
-//import  from 'emby-itemscontainer';
-//import  from 'emby-scroller';
-//import  from 'emby-button';
-//import  from 'css!./homesections';
-
+import 'paper-icon-button-light';
+import 'emby-itemscontainer';
+import 'emby-scroller';
+import 'emby-button';
+import 'css!./homesections';
 
     export function getDefaultSection(index) {
         switch (index) {
@@ -351,7 +350,7 @@ import imageHelper from 'scripts/imagehelper';
     }
 
     function getRequirePromise(deps) {
-        return new Promise(function (resolve, reject) {
+        return new Promise ((resolve,reject) => {
             require(deps, resolve);
         });
     }
