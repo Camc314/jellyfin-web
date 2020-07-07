@@ -6,6 +6,94 @@
     -ms-user-select: none;
 }
 
+.videoBkOverlay, .videoFwdOverlay {
+    position: absolute;
+    background-color:#0000001f;
+    border-radius:50%;
+    height: 200vh;
+    width: 60vw;
+    transition: opacity 1s, background-color 1s;
+}
+
+.videoBkOverlay {
+    opacity: 0;
+    overflow: hidden;
+    left: -20vw;
+    top: -50vh;
+}
+
+.videoBkOverlay.is-visible {
+    background-color: #0000006c;
+    opacity: 1;    
+    transition: opacity .2s, background-color 0.5s;
+}
+
+.videoBkOverlayInner {
+    transition: all 1s ease-in-out;
+    background-color: #0000006c;
+    border-radius: 50%;
+    left: -20vw;
+    top: -50vh;
+    height: 0;
+    width: 0;
+}
+
+.videoBkOverlayInner.is-visible {
+    height: 200vh;
+    width: 60vw;
+    transition: all 0.3s ease-in-out;
+}
+
+.videoFwdOverlay {
+    opacity: 0;
+    overflow: hidden;
+    left: 63vw;
+    top: -50vh;
+    transition: opacity 1s;
+}
+
+.videoFwdOverlay.is-visible {
+    opacity: 1;    
+    transition: opacity .2s;
+}
+
+.videoFwdOverlayInner {
+    transition: all 1s ease-in-out;
+    background-color: #0000006c;
+    border-radius: 50%;
+    left: -20vw;
+    top: -50vh;
+    height: 0;
+    width: 0;
+}
+
+.videoFwdOverlayInner.is-visible {
+    height: 200vh;
+    width: 60vw;
+    transition: all 0.3s ease-in-out;
+}
+
+.videoFwdOverlayText {
+    position:absolute;
+    left: 15vw;
+        top: 90vh; 
+      color: white;
+             display:flex;
+       flex-direction:column;
+                justify-content:space-around;
+}
+
+.videoBkOverlayText {
+    position:absolute;
+     right: 15vw;
+      top: 90vh;
+       color:
+        white;
+        display:flex;
+        flex-direction:column;
+    justify-content:space-around;
+}
+
 .osdPoster img,
 .pageContainer,
 .videoOsdBottom {

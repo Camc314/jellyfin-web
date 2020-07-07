@@ -77,18 +77,61 @@ define(['playbackManager', 'dom', 'inputManager', 'datetime', 'itemHelper', 'med
             playbackManager.setVolume(newValue, player);
         }
 
-        function onDoubleClick(e) {
-            var clientX = e.clientX;
+        var contSkip = 0;
+        var t;
+        var a;
+        var b;
+        var c;
+        var d;
 
-            if (null != clientX) {
-                if (clientX < dom.getWindowSize().innerWidth / 2) {
-                    playbackManager.rewind(currentPlayer);
-                } else {
-                    playbackManager.fastForward(currentPlayer);
+        function onSingleClick(e) {
+            var clientX = e.clientX;
+            var clientY = e.clientY;
+            var osdHeight = view.querySelector('.videoOsdBottom').offsetHeight;
+            var skipForwardLength = userSettings.skipForwardLength();
+            var skipBackLength = userSettings.skipBackLength();
+
+            if (null != clientX && null != clientY && clientY < (dom.getWindowSize().innerHeight - osdHeight)) {
+                if (typeof t !== 'undefined') {
+                    clearTimeout(t);
+                    clearTimeout(a);
+                    clearTimeout(b);
+                    clearTimeout(c);
+                    clearTimeout(d);
                 }
 
-                e.preventDefault();
-                e.stopPropagation();
+                if (contSkip > 0) {
+
+                    if (clientX < dom.getWindowSize().innerWidth / 2) {
+
+
+                        view.querySelector('.videoBkOverlay').classList.add('is-visible');
+                        view.querySelector('.videoBkOverlayInner').classList.add('is-visible');
+
+                        view.querySelector('.bkOverlayText').innerHTML = ((contSkip) * (skipBackLength / 1000)).toString() + ' seconds';
+
+                        a = setTimeout(function () { view.querySelector('.videoBkOverlay').classList.remove('is-visible') }, 500);
+                        b = setTimeout(function () { view.querySelector('.videoBkOverlayInner').classList.remove('is-visible') }, 1500);
+
+                        playbackManager.rewind(currentPlayer);
+                    } else {
+
+                        view.querySelector('.videoFwdOverlay').classList.add('is-visible');
+                        view.querySelector('.videoFwdOverlayInner').classList.add('is-visible');
+
+                        view.querySelector('.fwdOverlayText').innerHTML = ((contSkip) * (skipForwardLength / 1000)).toString() + ' seconds';
+
+                        c = setTimeout(function () { view.querySelector('.videoFwdOverlay').classList.remove('is-visible') }, 500);
+                        d = setTimeout(function () { view.querySelector('.videoFwdOverlayInner').classList.remove('is-visible') }, 1500);
+
+                        playbackManager.fastForward(currentPlayer);
+                    }
+                    contSkip++;
+                } else {
+                    contSkip = 1;
+                }
+
+                t = setTimeout(function () { contSkip = 0; }, 750);
             }
         }
 
@@ -1129,6 +1172,7 @@ define(['playbackManager', 'dom', 'inputManager', 'datetime', 'itemHelper', 'med
                         e.stopPropagation();
                     }
                     break;
+                case 'space':
                 case 'k':
                     playbackManager.playPause(currentPlayer);
                     showOsd();
@@ -1389,7 +1433,7 @@ define(['playbackManager', 'dom', 'inputManager', 'datetime', 'itemHelper', 'med
                     });
                 });
             } catch (e) {
-                require(['appRouter'], function(appRouter) {
+                require(['appRouter'], function (appRouter) {
                     appRouter.goHome();
                 });
             }
@@ -1478,7 +1522,7 @@ define(['playbackManager', 'dom', 'inputManager', 'datetime', 'itemHelper', 'med
                             clearTimeout(playPauseClickTimeout);
                             playPauseClickTimeout = 0;
                         } else {
-                            playPauseClickTimeout = setTimeout(function() {
+                            playPauseClickTimeout = setTimeout(function () {
                                 playbackManager.playPause(currentPlayer);
                                 showOsd();
                                 playPauseClickTimeout = 0;
@@ -1497,7 +1541,7 @@ define(['playbackManager', 'dom', 'inputManager', 'datetime', 'itemHelper', 'med
         });
 
         if (browser.touch) {
-            dom.addEventListener(view, 'dblclick', onDoubleClick, {});
+            dom.addEventListener(view, 'click', onSingleClick, {});
         } else {
             var options = { passive: true };
             dom.addEventListener(view, 'dblclick', function () {
