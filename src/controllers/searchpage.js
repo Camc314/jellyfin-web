@@ -1,7 +1,11 @@
-define(['focusManager', 'searchFields', 'searchResults', 'events'], function (focusManager, SearchFields, SearchResults, events) {
-    'use strict';
+import focusManager from 'focusManager';
+import SearchFields from 'searchFields';
+import SearchResults from 'searchResults';
+import events from 'events';
 
-    return function (view, params) {
+/* eslint-disable indent */
+
+    export default function (view, params) {
         function onSearch(e, value) {
             self.searchResults.search(value);
         }
@@ -33,4 +37,5 @@ define(['focusManager', 'searchFields', 'searchResults', 'events'], function (fo
             }
         });
     };
-});
+
+/* eslint-enable indent */
