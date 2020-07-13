@@ -1,5 +1,20 @@
-define(['require', 'dom', 'focusManager', 'dialogHelper', 'loading', 'layoutManager', 'connectionManager', 'globalize', 'userSettings', 'emby-select', 'paper-icon-button-light', 'material-icons', 'css!./../formdialog', 'emby-button', 'flexStyles'], function (require, dom, focusManager, dialogHelper, loading, layoutManager, connectionManager, globalize, userSettings) {
-    'use strict';
+import require from 'require';
+import dom from 'dom';
+import focusManager from 'focusManager';
+import dialogHelper from 'dialogHelper';
+import loading from 'loading';
+import layoutManager from 'layoutManager';
+import connectionManager from 'connectionManager';
+import globalize from 'globalize';
+import userSettings from 'userSettings';
+import 'emby-select';
+import 'paper-icon-button-light';
+import 'material-icons';
+import 'css!./../formdialog';
+import 'emby-button';
+import 'flexStyles';
+
+/* eslint-disable indent */
 
     function onSubmit(e) {
 
@@ -17,13 +32,13 @@ define(['require', 'dom', 'focusManager', 'dialogHelper', 'loading', 'layoutMana
 
     function centerFocus(elem, horiz, on) {
         require(['scrollHelper'], function (scrollHelper) {
-            var fn = on ? 'on' : 'off';
+            const fn = on ? 'on' : 'off';
             scrollHelper.centerFocus[fn](elem, horiz);
         });
     }
 
     function fillSortBy(context, options) {
-        var selectSortBy = context.querySelector('.selectSortBy');
+        const selectSortBy = context.querySelector('.selectSortBy');
 
         selectSortBy.innerHTML = options.map(function (o) {
 
@@ -38,17 +53,16 @@ define(['require', 'dom', 'focusManager', 'dialogHelper', 'loading', 'layoutMana
         userSettings.setFilter(settingsKey + '-sortby', context.querySelector('.selectSortBy').value);
     }
 
-    function SortMenu() {
-
+class SortMenu {
+    constructor() {
     }
-
-    SortMenu.prototype.show = function (options) {
+    show(options) {
 
         return new Promise(function (resolve, reject) {
 
             require(['text!./sortmenu.template.html'], function (template) {
 
-                var dialogOptions = {
+                const dialogOptions = {
                     removeOnClose: true,
                     scrollY: false
                 };
@@ -59,11 +73,11 @@ define(['require', 'dom', 'focusManager', 'dialogHelper', 'loading', 'layoutMana
                     dialogOptions.size = 'small';
                 }
 
-                var dlg = dialogHelper.createDialog(dialogOptions);
+                const dlg = dialogHelper.createDialog(dialogOptions);
 
                 dlg.classList.add('formDialog');
 
-                var html = '';
+                let html = '';
 
                 html += '<div class="formDialogHeader">';
                 html += '<button is="paper-icon-button-light" class="btnCancel hide-mouse-idle-tv" tabindex="-1"><span class="material-icons arrow_back"></span></button>';
@@ -87,7 +101,7 @@ define(['require', 'dom', 'focusManager', 'dialogHelper', 'loading', 'layoutMana
                     centerFocus(dlg.querySelector('.formDialogContent'), false, true);
                 }
 
-                var submitted;
+                let submitted;
 
                 dlg.querySelector('form').addEventListener('change', function () {
 
@@ -96,7 +110,6 @@ define(['require', 'dom', 'focusManager', 'dialogHelper', 'loading', 'layoutMana
                     //    saveValues(dlg, options.settings, options.settingsKey);
                     //    options.onChange();
                     //}
-
                 }, true);
 
                 dialogHelper.open(dlg).then(function () {
@@ -118,7 +131,8 @@ define(['require', 'dom', 'focusManager', 'dialogHelper', 'loading', 'layoutMana
                 });
             });
         });
-    };
+    }
+}
 
-    return SortMenu;
-});
+export default new SortMenu;
+/* eslint-enable indent */
