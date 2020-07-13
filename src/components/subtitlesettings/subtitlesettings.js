@@ -91,7 +91,7 @@ function save(instance, context, userId, userSettings, apiClient, enableSaveConf
             loading.hide();
             if (enableSaveConfirmation) {
                 require(['toast'], function (toast) {
-                    toast(globalize.translate('SettingsSaved'));
+                    toast.default(globalize.translate('SettingsSaved'));
                 });
             }
 

@@ -37,7 +37,7 @@ define(['controllers/dashboard/users/userpasswordpage', 'loading', 'libraryMenu'
         switch (evt.target.error.code) {
             case evt.target.error.NOT_FOUND_ERR:
                 require(['toast'], function (toast) {
-                    toast(globalize.translate('FileNotFound'));
+                    toast.default(globalize.translate('FileNotFound'));
                 });
                 break;
             case evt.target.error.ABORT_ERR:
@@ -46,7 +46,7 @@ define(['controllers/dashboard/users/userpasswordpage', 'loading', 'libraryMenu'
             case evt.target.error.NOT_READABLE_ERR:
             default:
                 require(['toast'], function (toast) {
-                    toast(globalize.translate('FileReadError'));
+                    toast.default(globalize.translate('FileReadError'));
                 });
         }
     }
@@ -54,7 +54,7 @@ define(['controllers/dashboard/users/userpasswordpage', 'loading', 'libraryMenu'
     function onFileReaderAbort(evt) {
         loading.hide();
         require(['toast'], function (toast) {
-            toast(globalize.translate('FileReadCancelled'));
+            toast.default(globalize.translate('FileReadCancelled'));
         });
     }
 

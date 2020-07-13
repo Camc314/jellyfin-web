@@ -159,7 +159,7 @@ define(['jQuery', 'datetime', 'loading', 'libraryMenu', 'globalize', 'listViewSt
         loading.hide();
 
         require(['toast'], function (toast) {
-            toast(globalize.translate('SettingsSaved'));
+            toast.default(globalize.translate('SettingsSaved'));
         });
     }
 

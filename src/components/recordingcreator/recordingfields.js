@@ -178,7 +178,7 @@ define(['globalize', 'connectionManager', 'serverNotifications', 'require', 'loa
 
     function sendToast(msg) {
         require(['toast'], function (toast) {
-            toast(msg);
+            toast.default(msg);
         });
     }
 

@@ -357,7 +357,7 @@ define(['apphost', 'globalize', 'connectionManager', 'itemHelper', 'appRouter', 
 
                         if (document.execCommand('copy')) {
                             require(['toast'], function (toast) {
-                                toast(globalize.translate('CopyStreamURLSuccess'));
+                                toast.default(globalize.translate('CopyStreamURLSuccess'));
                             });
                         } else {
                             prompt(globalize.translate('CopyStreamURL'), downloadHref);
@@ -372,7 +372,7 @@ define(['apphost', 'globalize', 'connectionManager', 'itemHelper', 'appRouter', 
                         /* eslint-disable-next-line compat/compat */
                         navigator.clipboard.writeText(downloadHref).then(function () {
                             require(['toast'], function (toast) {
-                                toast(globalize.translate('CopyStreamURLSuccess'));
+                                toast.default(globalize.translate('CopyStreamURLSuccess'));
                             });
                         }).catch(function () {
                             textAreaCopy();

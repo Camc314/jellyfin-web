@@ -85,7 +85,7 @@ define(['jQuery', 'loading', 'globalize', 'emby-checkbox'], function ($, loading
             });
         }, function (response) {
             require(['toast'], function (toast) {
-                toast(globalize.translate('DefaultErrorMessage'));
+                toast.default(globalize.translate('DefaultErrorMessage'));
             });
 
             loading.hide();

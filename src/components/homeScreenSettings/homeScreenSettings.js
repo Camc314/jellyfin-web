@@ -414,7 +414,7 @@ define(['require', 'apphost', 'layoutManager', 'focusManager', 'globalize', 'loa
                 loading.hide();
                 if (enableSaveConfirmation) {
                     require(['toast'], function (toast) {
-                        toast(globalize.translate('SettingsSaved'));
+                        toast.default(globalize.translate('SettingsSaved'));
                     });
                 }
 

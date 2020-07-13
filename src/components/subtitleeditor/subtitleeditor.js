@@ -56,7 +56,7 @@ define(['dialogHelper', 'require', 'layoutManager', 'globalize', 'userSettings',
             hasChanges = true;
 
             require(['toast'], function (toast) {
-                toast(globalize.translate('MessageDownloadQueued'));
+                toast.default(globalize.translate('MessageDownloadQueued'));
             });
 
             focusManager.autoFocus(context);

@@ -255,7 +255,7 @@ define(['require', 'browser', 'appSettings', 'apphost', 'focusManager', 'quality
                 loading.hide();
                 if (enableSaveConfirmation) {
                     require(['toast'], function (toast) {
-                        toast(globalize.translate('SettingsSaved'));
+                        toast.default(globalize.translate('SettingsSaved'));
                     });
                 }
 

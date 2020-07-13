@@ -21,7 +21,7 @@ define(['itemHelper', 'dom', 'layoutManager', 'dialogHelper', 'datetime', 'loadi
         function afterContentTypeUpdated() {
 
             require(['toast'], function (toast) {
-                toast(globalize.translate('MessageItemSaved'));
+                toast.default(globalize.translate('MessageItemSaved'));
             });
 
             loading.hide();

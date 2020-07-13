@@ -74,7 +74,7 @@ define(['globalize', 'loading', 'connectionManager'], function (globalize, loadi
                     apiClient.cancelLiveTvSeriesTimer(timerId).then(function () {
 
                         require(['toast'], function (toast) {
-                            toast(globalize.translate('SeriesCancelled'));
+                            toast.default(globalize.translate('SeriesCancelled'));
                         });
 
                         loading.hide();
@@ -116,7 +116,7 @@ define(['globalize', 'loading', 'connectionManager'], function (globalize, loadi
 
     function sendToast(msg) {
         require(['toast'], function (toast) {
-            toast(msg);
+            toast.default(msg);
         });
     }
 
@@ -173,7 +173,7 @@ define(['globalize', 'loading', 'connectionManager'], function (globalize, loadi
                         apiClient.cancelLiveTvSeriesTimer(seriesTimerId).then(function () {
 
                             require(['toast'], function (toast) {
-                                toast(globalize.translate('SeriesCancelled'));
+                                toast.default(globalize.translate('SeriesCancelled'));
                             });
 
                             loading.hide();

@@ -628,7 +628,7 @@ define(['jQuery', 'loading', 'globalize', 'emby-select', 'emby-button', 'emby-in
                 contentType: 'application/json'
             }).then(function () {
                 require(['toast'], function (toast) {
-                    toast('Settings saved.');
+                    toast.default('Settings saved.');
                 });
             }, Dashboard.processErrorResponse);
         } else {

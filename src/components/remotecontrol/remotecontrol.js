@@ -736,7 +736,7 @@ define(['browser', 'datetime', 'backdrop', 'libraryBrowser', 'listView', 'imageL
             form.querySelector('input').value = '';
 
             require(['toast'], function (toast) {
-                toast('Message sent.');
+                toast.default('Message sent.');
             });
 
             e.preventDefault();
@@ -755,7 +755,7 @@ define(['browser', 'datetime', 'backdrop', 'libraryBrowser', 'listView', 'imageL
             form.querySelector('input').value = '';
 
             require(['toast'], function (toast) {
-                toast('Text sent.');
+                toast.default('Text sent.');
             });
 
             e.preventDefault();

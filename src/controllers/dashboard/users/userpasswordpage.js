@@ -79,7 +79,7 @@ define(['loading', 'libraryMenu', 'globalize', 'emby-button'], function (loading
                     loading.hide();
 
                     require(['toast'], function (toast) {
-                        toast(globalize.translate('MessageSettingsSaved'));
+                        toast.default(globalize.translate('MessageSettingsSaved'));
                     });
 
                     loadUser(view, params);
@@ -102,7 +102,7 @@ define(['loading', 'libraryMenu', 'globalize', 'emby-button'], function (loading
                 loading.hide();
 
                 require(['toast'], function (toast) {
-                    toast(globalize.translate('PasswordSaved'));
+                    toast.default(globalize.translate('PasswordSaved'));
                 });
 
                 loadUser(view, params);
@@ -120,7 +120,7 @@ define(['loading', 'libraryMenu', 'globalize', 'emby-button'], function (loading
 
             if (form.querySelector('#txtNewPassword').value != form.querySelector('#txtNewPasswordConfirm').value) {
                 require(['toast'], function (toast) {
-                    toast(globalize.translate('PasswordMatchError'));
+                    toast.default(globalize.translate('PasswordMatchError'));
                 });
             } else {
                 loading.show();

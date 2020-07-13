@@ -11,7 +11,7 @@ define(['connectionManager', 'playbackManager', 'syncPlayManager', 'events', 'in
         var args = cmd.Arguments;
         if (args.TimeoutMs) {
             require(['toast'], function (toast) {
-                toast({ title: args.Header, text: args.Text });
+                toast.default({ title: args.Header, text: args.Text });
             });
         } else {
             require(['alert'], function (alert) {

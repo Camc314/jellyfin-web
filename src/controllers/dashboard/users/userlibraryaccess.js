@@ -85,7 +85,7 @@ define(['jQuery', 'loading', 'libraryMenu', 'globalize'], function ($, loading, 
         loading.hide();
 
         require(['toast'], function (toast) {
-            toast(globalize.translate('SettingsSaved'));
+            toast.default(globalize.translate('SettingsSaved'));
         });
     }
 

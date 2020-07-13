@@ -28,7 +28,7 @@ define(['apphost', 'appSettings', 'dom', 'connectionManager', 'loading', 'layout
             if (UnauthorizedOrForbidden.includes(response.status)) {
                 require(['toast'], function (toast) {
                     const messageKey = response.status === 401 ? 'MessageInvalidUser' : 'MessageUnauthorizedUser';
-                    toast(globalize.translate(messageKey));
+                    toast.default(globalize.translate(messageKey));
                 });
             } else {
                 Dashboard.alert({

@@ -136,6 +136,7 @@
           "src/components/syncPlay/playbackPermissionManager.js",
           "src/components/syncPlay/syncPlayManager.js",
           "src/components/syncPlay/timeSyncManager.js",
+          "src/components/toast/toast.js",
           "src/controllers/dashboard/logs.js",
           "src/controllers/user/subtitles.js",
           "src/controllers/dashboard/plugins/repositories.js",

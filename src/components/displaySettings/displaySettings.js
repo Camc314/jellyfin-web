@@ -244,7 +244,7 @@ define(['require', 'browser', 'layoutManager', 'appSettings', 'pluginManager', '
                 loading.hide();
                 if (enableSaveConfirmation) {
                     require(['toast'], function (toast) {
-                        toast(globalize.translate('SettingsSaved'));
+                        toast.default(globalize.translate('SettingsSaved'));
                     });
                 }
                 events.trigger(instance, 'saved');

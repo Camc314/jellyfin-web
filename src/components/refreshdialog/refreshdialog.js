@@ -76,7 +76,7 @@ define(['dom', 'shell', 'dialogHelper', 'loading', 'layoutManager', 'connectionM
         dialogHelper.close(dlg);
 
         require(['toast'], function (toast) {
-            toast(globalize.translate('RefreshQueued'));
+            toast.default(globalize.translate('RefreshQueued'));
         });
 
         loading.hide();
