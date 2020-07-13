@@ -31,7 +31,7 @@ import 'flexStyles';
     }
 
     function centerFocus(elem, horiz, on) {
-        require(['scrollHelper'], function (scrollHelper) {
+        import('scrollHelper').then(({default: scrollHelper}) => {
             const fn = on ? 'on' : 'off';
             scrollHelper.centerFocus[fn](elem, horiz);
         });
@@ -60,7 +60,7 @@ class SortMenu {
 
         return new Promise(function (resolve, reject) {
 
-            require(['text!./sortmenu.template.html'], function (template) {
+            import('text!./sortmenu.template.html').then(({default: template}) => {
 
                 const dialogOptions = {
                     removeOnClose: true,
