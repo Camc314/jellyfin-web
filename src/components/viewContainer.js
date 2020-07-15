@@ -43,14 +43,6 @@ define(['browser', 'dom', 'layoutManager', 'css!components/viewManager/viewConta
             var newView = newViewInfo.elem;
             var modulesToLoad = [];
 
-            if (newViewInfo.hasjQuerySelect) {
-                modulesToLoad.push('legacySelectMenu');
-            }
-
-            if (newViewInfo.hasjQueryChecked) {
-                modulesToLoad.push('fnchecked');
-            }
-
             return new Promise(function (resolve) {
                 require(modulesToLoad, function () {
                     var currentPage = allPages[pageIndex];
@@ -153,19 +145,16 @@ define(['browser', 'dom', 'layoutManager', 'css!components/viewManager/viewConta
         }
 
         var hasjQuery = false;
-        var hasjQuerySelect = false;
         var hasjQueryChecked = false;
 
         if (isPluginpage) {
             hasjQuery = -1 != viewHtml.indexOf('jQuery') || -1 != viewHtml.indexOf('$(') || -1 != viewHtml.indexOf('$.');
             hasjQueryChecked = -1 != viewHtml.indexOf('.checked(');
-            hasjQuerySelect = -1 != viewHtml.indexOf('.selectmenu(');
         }
 
         return {
             elem: elem,
             hasScript: hasScript,
-            hasjQuerySelect: hasjQuerySelect,
             hasjQueryChecked: hasjQueryChecked,
             hasjQuery: hasjQuery
         };

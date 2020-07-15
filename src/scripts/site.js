@@ -429,7 +429,6 @@ var AppInfo = {};
                     keyboardnavigation.enable();
                 });
                 require(['mouseManager']);
-                require(['focusPreventScroll']);
                 require(['autoFocuser'], function(autoFocuser) {
                     autoFocuser.enable();
                 });
@@ -737,11 +736,6 @@ var AppInfo = {};
         define('cardStyle', ['css!' + componentsPath + '/cardbuilder/card'], returnFirstDependency);
         define('flexStyles', ['css!assets/css/flexstyles'], returnFirstDependency);
 
-        // define legacy features
-        // TODO delete the rest of these
-        define('fnchecked', ['legacy/fnchecked'], returnFirstDependency);
-        define('legacySelectMenu', ['legacy/selectmenu'], returnFirstDependency);
-
         // there are several objects that need to be instantiated
         // TODO find a better way to do this
         define('appFooter', [componentsPath + '/appFooter/appFooter'], returnFirstDependency);
@@ -844,7 +838,6 @@ var AppInfo = {};
             return viewManager;
         });
         define('slideshow', [componentsPath + '/slideshow/slideshow'], returnFirstDependency);
-        define('focusPreventScroll', ['legacy/focusPreventScroll'], returnFirstDependency);
         define('userdataButtons', [componentsPath + '/userdatabuttons/userdatabuttons'], returnFirstDependency);
         define('listView', [componentsPath + '/listview/listview'], returnFirstDependency);
         define('indicators', [componentsPath + '/indicators/indicators'], returnFirstDependency);
