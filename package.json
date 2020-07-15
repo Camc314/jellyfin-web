@@ -137,6 +137,7 @@
           "src/controllers/dashboard/logs.js",
           "src/controllers/dashboard/plugins/add.js",
           "src/controllers/dashboard/plugins/available.js",
+          "src/controllers/dashboard/plugins/installed.js",
           "src/controllers/user/subtitles.js",
           "src/controllers/dashboard/plugins/repositories.js",
           "src/elements/emby-tabs/emby-tabs.js",
