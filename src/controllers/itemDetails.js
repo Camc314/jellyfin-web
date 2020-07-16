@@ -140,7 +140,7 @@ import 'emby-select';
         }
 
         if (user.Policy.EnableLiveTvManagement) {
-            require(['seriesRecordingEditor'], function (seriesRecordingEditor) {
+            import('seriesRecordingEditor').then(({default: seriesRecordingEditor}) => {
                 seriesRecordingEditor.embed(item, apiClient.serverId(), {
                     context: page.querySelector('.seriesRecordingEditor')
                 });
@@ -668,7 +668,7 @@ import 'emby-select';
             hideAll(page, 'btnDownload', true);
         }
 
-        require(['autoFocuser'], function (autoFocuser) {
+        import('autoFocuser').then(({default: autoFocuser}) => {
             autoFocuser.autoFocus(page);
         });
     }
@@ -713,7 +713,7 @@ import 'emby-select';
             const recordingFieldsElement = page.querySelector('.recordingFields');
 
             if ('Program' == item.Type && user.Policy.EnableLiveTvManagement) {
-                require(['recordingFields'], function (recordingFields) {
+                import('recordingFields').then(({default: recordingFields}) => {
                     instance.currentRecordingFields = new recordingFields({
                         parent: recordingFieldsElement,
                         programId: item.Id,
@@ -1562,13 +1562,13 @@ import 'emby-select';
     }
 
     function renderItemsByName(page, item) {
-        require('scripts/itembynamedetailpage'.split(','), function () {
+        import('scripts/itembynamedetailpage').then(() => {
             window.ItemsByName.renderItems(page, item);
         });
     }
 
     function renderPlaylistItems(page, item) {
-        require('scripts/playlistedit'.split(','), function () {
+        import('scripts/playlistedit').then(() => {
             PlaylistViewer.render(page, item);
         });
     }
@@ -1771,7 +1771,7 @@ import 'emby-select';
 
         // HACK: Call autoFocuser again because btnPlay may be hidden, but focused by reloadFromItem
         // FIXME: Sometimes focus does not move until all (?) sections are loaded
-        require(['autoFocuser'], function (autoFocuser) {
+        import('autoFocuser').then(({default: autoFocuser}) => {
             autoFocuser.autoFocus(page);
         });
     }
@@ -1806,7 +1806,7 @@ import 'emby-select';
         collectionItems.insertAdjacentHTML('beforeend', html);
         imageLoader.lazyChildren(collectionItems);
         collectionItems.querySelector('.btnAddToCollection').addEventListener('click', function () {
-            require(['alert'], function (alert) {
+            import('alert').then(({default: alert}) => {
                 alert({
                     text: globalize.translate('AddItemToCollectionHelp'),
                     html: globalize.translate('AddItemToCollectionHelp') + '<br/><br/><a is="emby-linkbutton" class="button-link" target="_blank" href="https://web.archive.org/web/20181216120305/https://github.com/MediaBrowser/Wiki/wiki/Collections">' + globalize.translate('ButtonLearnMore') + '</a>'
@@ -1855,7 +1855,7 @@ import 'emby-select';
             page.querySelector('#scenesCollapsible').classList.remove('hide');
             const scenesContent = page.querySelector('#scenesContent');
 
-            require(['chaptercardbuilder'], function (chaptercardbuilder) {
+            import('chaptercardbuilder').then(({default: chaptercardbuilder}) => {
                 chaptercardbuilder.buildChapterCards(item, chapters, {
                     itemsContainer: scenesContent,
                     backdropShape: 'overflowBackdrop',
@@ -1906,7 +1906,7 @@ import 'emby-select';
         page.querySelector('#castCollapsible').classList.remove('hide');
         const castContent = page.querySelector('#castContent');
 
-        require(['peoplecardbuilder'], function (peoplecardbuilder) {
+        import('peoplecardbuilder').then(({default: peoplecardbuilder}) => {
             peoplecardbuilder.buildPeopleCards(people, {
                 itemsContainer: castContent,
                 coverImage: true,
@@ -1953,7 +1953,7 @@ import 'emby-select';
         }
 
         function splitVersions(instance, page, apiClient, params) {
-            require(['confirm'], function (confirm) {
+            import('confirm').then(({default: confirm}) => {
                 confirm('Are you sure you wish to split the media sources into separate items?', 'Split Media Apart').then(function () {
                     loading.show();
                     apiClient.ajax({
@@ -2015,7 +2015,7 @@ import 'emby-select';
         }
 
         function onDeleteClick() {
-            require(['deleteHelper'], function (deleteHelper) {
+            import('deleteHelper').then(({default: deleteHelper}) => {
                 deleteHelper.deleteItem({
                     item: currentItem,
                     navigate: true
@@ -2024,7 +2024,7 @@ import 'emby-select';
         }
 
         function onCancelSeriesTimerClick() {
-            require(['recordingHelper'], function (recordingHelper) {
+            import('recordingHelper').then(({default: recordingHelper}) => {
                 recordingHelper.cancelSeriesTimerWithConfirmation(currentItem.Id, currentItem.ServerId).then(function () {
                     Dashboard.navigate('livetv.html');
                 });
@@ -2032,7 +2032,7 @@ import 'emby-select';
         }
 
         function onCancelTimerClick() {
-            require(['recordingHelper'], function (recordingHelper) {
+            import('recordingHelper').then(({default: recordingHelper}) => {
                 recordingHelper.cancelTimer(connectionManager.getApiClient(currentItem.ServerId), currentItem.TimerId).then(function () {
                     reload(self, view, params);
                 });
@@ -2044,7 +2044,7 @@ import 'emby-select';
         }
 
         function onDownloadClick() {
-            require(['fileDownloader'], function (fileDownloader) {
+            import('fileDownloader').then(({default: fileDownloader}) => {
                 const downloadHref = apiClient.getItemDownloadUrl(currentItem.Id);
                 fileDownloader.download([{
                     url: downloadHref,
@@ -2074,7 +2074,7 @@ import 'emby-select';
 
         function editImages() {
             return new Promise(function (resolve, reject) {
-                require(['imageEditor'], function (imageEditor) {
+                import('imageEditor').then(({default: imageEditor}) => {
                     imageEditor.show({
                         itemId: currentItem.Id,
                         serverId: currentItem.ServerId
