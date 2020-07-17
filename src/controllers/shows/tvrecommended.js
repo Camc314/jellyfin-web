@@ -75,7 +75,7 @@ define(['events', 'inputManager', 'libraryMenu', 'layoutManager', 'loading', 'do
                 EnableImageTypes: 'Primary,Backdrop,Thumb',
                 EnableTotalRecordCount: false
             };
-            query.ParentId = libraryMenu.getTopParentId();
+            query.ParentId = libraryMenu.default.getTopParentId();
             ApiClient.getNextUpEpisodes(query).then(function (result) {
                 if (result.Items.length) {
                     view.querySelector('.noNextUpItems').classList.add('hide');
@@ -113,7 +113,7 @@ define(['events', 'inputManager', 'libraryMenu', 'layoutManager', 'loading', 'do
         }
 
         function loadResume() {
-            var parentId = libraryMenu.getTopParentId();
+            var parentId = libraryMenu.default.getTopParentId();
             var screenWidth = dom.getWindowSize().innerWidth;
             var limit = screenWidth >= 1600 ? 5 : 6;
             var options = {
@@ -311,11 +311,11 @@ define(['events', 'inputManager', 'libraryMenu', 'layoutManager', 'loading', 'do
                 if (parentId) {
                     ApiClient.getItem(ApiClient.getCurrentUserId(), parentId).then(function (item) {
                         view.setAttribute('data-title', item.Name);
-                        libraryMenu.setTitle(item.Name);
+                        libraryMenu.default.setTitle(item.Name);
                     });
                 } else {
                     view.setAttribute('data-title', globalize.translate('TabShows'));
-                    libraryMenu.setTitle(globalize.translate('TabShows'));
+                    libraryMenu.default.setTitle(globalize.translate('TabShows'));
                 }
             }
 

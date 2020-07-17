@@ -166,6 +166,7 @@
           "src/components/fetchhelper.js",
           "src/scripts/keyboardNavigation.js",
           "src/scripts/libraryBrowser.js",
+          "src/scripts/libraryMenu.js",
           "src/scripts/settings/appSettings.js",
           "src/scripts/settings/userSettings.js",
           "src/scripts/themeLoader.js",

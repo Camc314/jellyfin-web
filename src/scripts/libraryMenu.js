@@ -1,5 +1,24 @@
-define(['dom', 'layoutManager', 'inputManager', 'connectionManager', 'events', 'viewManager', 'libraryBrowser', 'appRouter', 'apphost', 'playbackManager', 'syncPlayManager', 'groupSelectionMenu', 'browser', 'globalize', 'scripts/imagehelper', 'paper-icon-button-light', 'material-icons', 'scrollStyles', 'flexStyles'], function (dom, layoutManager, inputManager, connectionManager, events, viewManager, libraryBrowser, appRouter, appHost, playbackManager, syncPlayManager, groupSelectionMenu, browser, globalize, imageHelper) {
-    'use strict';
+import dom from 'dom';
+import layoutManager from 'layoutManager';
+import inputManager from 'inputManager';
+import connectionManager from 'connectionManager';
+import events from 'events';
+import viewManager from 'viewManager';
+import libraryBrowser from 'libraryBrowser';
+import appRouter from 'appRouter';
+import appHost from 'apphost';
+import playbackManager from 'playbackManager';
+import syncPlayManager from 'syncPlayManager';
+import groupSelectionMenu from 'groupSelectionMenu';
+import browser from 'browser';
+import globalize from 'globalize';
+import imageHelper from 'scripts/imagehelper';
+import 'paper-icon-button-light';
+import 'material-icons';
+import 'scrollStyles';
+import 'flexStyles';
+
+/* eslint-disable indent */
 
     function renderHeader() {
         var html = '';
@@ -970,5 +989,7 @@ define(['dom', 'layoutManager', 'inputManager', 'connectionManager', 'events', '
     events.on(syncPlayManager, 'enabled', onSyncPlayEnabled);
     events.on(syncPlayManager, 'syncing', onSyncPlaySyncing);
     loadNavDrawer();
-    return LibraryMenu;
-});
+
+export default LibraryMenu;
+
+/* eslint-enable indent */

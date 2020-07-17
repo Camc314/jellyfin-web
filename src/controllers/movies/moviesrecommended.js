@@ -395,11 +395,11 @@ define(['events', 'layoutManager', 'inputManager', 'userSettings', 'libraryMenu'
                 if (parentId) {
                     ApiClient.getItem(ApiClient.getCurrentUserId(), parentId).then(function (item) {
                         view.setAttribute('data-title', item.Name);
-                        libraryMenu.setTitle(item.Name);
+                        libraryMenu.default.setTitle(item.Name);
                     });
                 } else {
                     view.setAttribute('data-title', globalize.translate('TabMovies'));
-                    libraryMenu.setTitle(globalize.translate('TabMovies'));
+                    libraryMenu.default.setTitle(globalize.translate('TabMovies'));
                 }
             }
 

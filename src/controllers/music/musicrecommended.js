@@ -385,11 +385,11 @@ define(['browser', 'layoutManager', 'userSettings', 'inputManager', 'loading', '
                 if (parentId) {
                     ApiClient.getItem(ApiClient.getCurrentUserId(), parentId).then(function (item) {
                         view.setAttribute('data-title', item.Name);
-                        libraryMenu.setTitle(item.Name);
+                        libraryMenu.default.setTitle(item.Name);
                     });
                 } else {
                     view.setAttribute('data-title', globalize.translate('TabMusic'));
-                    libraryMenu.setTitle(globalize.translate('TabMusic'));
+                    libraryMenu.default.setTitle(globalize.translate('TabMusic'));
                 }
             }
 

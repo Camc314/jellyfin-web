@@ -2126,7 +2126,7 @@ define(['loading', 'appRouter', 'layoutManager', 'connectionManager', 'userSetti
             var page = this;
 
             if (layoutManager.mobile) {
-                libraryMenu.setTransparentMenu(true);
+                libraryMenu.default.setTransparentMenu(true);
             }
 
             if (e.detail.isRestored) {
@@ -2144,7 +2144,7 @@ define(['loading', 'appRouter', 'layoutManager', 'connectionManager', 'userSetti
         view.addEventListener('viewbeforehide', function () {
             events.off(apiClient, 'message', onWebSocketMessage);
             events.off(playbackManager, 'playerchange', onPlayerChange);
-            libraryMenu.setTransparentMenu(false);
+            libraryMenu.default.setTransparentMenu(false);
         });
         view.addEventListener('viewdestroy', function () {
             currentItem = null;

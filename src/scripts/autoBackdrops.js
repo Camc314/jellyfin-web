@@ -63,7 +63,7 @@ define(['backdrop', 'userSettings', 'libraryMenu'], function (backdrop, userSett
             if (page.classList.contains('backdropPage')) {
                 if (enabled()) {
                     var type = page.getAttribute('data-backdroptype');
-                    var parentId = page.classList.contains('globalBackdropPage') ? '' : libraryMenu.getTopParentId();
+                    var parentId = page.classList.contains('globalBackdropPage') ? '' : libraryMenu.default.getTopParentId();
                     showBackdrop(type, parentId);
                 } else {
                     page.classList.remove('backdropPage');
