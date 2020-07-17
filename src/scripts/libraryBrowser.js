@@ -1,5 +1,7 @@
-define(['userSettings', 'globalize'], function (userSettings, globalize) {
-    'use strict';
+import * as userSettings from 'userSettings';
+import globalize from 'globalize';
+
+/* eslint-disable indent */
 
     var libraryBrowser = {
         getSavedQueryKey: function (modifier) {
@@ -96,7 +98,7 @@ define(['userSettings', 'globalize'], function (userSettings, globalize) {
                 }
 
                 if (options.addLayoutButton) {
-                    html += '<button is="paper-icon-button-light" title="' + globalize.translate('ButtonSelectView') + '" class="btnChangeLayout autoSize" data-layouts="' + (options.layouts || '') + '" onclick="LibraryBrowser.showLayoutMenu(this, \'' + (options.currentLayout || '') + '\');"><span class="material-icons view_comfy"></span></button>';
+                    html += '<button is="paper-icon-button-light" title="' + globalize.translate('ButtonSelectView') + '" class="btnChangeLayout autoSize" data-layouts="' + (options.layouts || '') + '" onclick="libraryBrowser.default.showLayoutMenu(this, \'' + (options.currentLayout || '') + '\');"><span class="material-icons view_comfy"></span></button>';
                 }
 
                 if (options.sortButton) {
@@ -195,5 +197,6 @@ define(['userSettings', 'globalize'], function (userSettings, globalize) {
         }
     };
     window.LibraryBrowser = libraryBrowser;
-    return libraryBrowser;
-});
+    export default libraryBrowser;
+
+/* eslint-enable indent */

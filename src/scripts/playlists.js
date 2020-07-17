@@ -16,7 +16,7 @@ define(['loading', 'listView', 'cardBuilder', 'libraryMenu', 'libraryBrowser', '
                         Fields: 'PrimaryImageAspectRatio,SortName,CumulativeRunTimeTicks,CanDelete',
                         StartIndex: 0
                     },
-                    view: libraryBrowser.getSavedView(key) || 'Poster'
+                    view: libraryBrowser.default.getSavedView(key) || 'Poster'
                 };
 
                 if (userSettings.libraryPageSize() > 0) {
@@ -24,7 +24,7 @@ define(['loading', 'listView', 'cardBuilder', 'libraryMenu', 'libraryBrowser', '
                 }
 
                 pageData.query.ParentId = libraryMenu.getTopParentId();
-                libraryBrowser.loadSavedQueryValues(key, pageData.query);
+                libraryBrowser.default.loadSavedQueryValues(key, pageData.query);
             }
 
             return pageData;
@@ -36,7 +36,7 @@ define(['loading', 'listView', 'cardBuilder', 'libraryMenu', 'libraryBrowser', '
 
         function getSavedQueryKey(context) {
             if (!context.savedQueryKey) {
-                context.savedQueryKey = libraryBrowser.getSavedQueryKey();
+                context.savedQueryKey = libraryBrowser.default.getSavedQueryKey();
             }
 
             return context.savedQueryKey;
@@ -77,7 +77,7 @@ define(['loading', 'listView', 'cardBuilder', 'libraryMenu', 'libraryBrowser', '
                 window.scrollTo(0, 0);
                 var html = '';
                 var viewStyle = getPageData(view).view;
-                view.querySelector('.listTopPaging').innerHTML = libraryBrowser.getQueryPagingHtml({
+                view.querySelector('.listTopPaging').innerHTML = libraryBrowser.default.getQueryPagingHtml({
                     startIndex: query.StartIndex,
                     limit: query.Limit,
                     totalRecordCount: result.TotalRecordCount,
@@ -166,13 +166,13 @@ define(['loading', 'listView', 'cardBuilder', 'libraryMenu', 'libraryBrowser', '
                     btnChangeLayout.addEventListener('layoutchange', function (e) {
                         var layout = e.detail.viewStyle;
                         getPageData(view).view = layout;
-                        libraryBrowser.saveViewSetting(getSavedQueryKey(view), layout);
+                        libraryBrowser.default.saveViewSetting(getSavedQueryKey(view), layout);
                         onViewStyleChange();
                         reloadItems();
                     });
                 }
 
-                libraryBrowser.saveQueryValues(getSavedQueryKey(view), query);
+                libraryBrowser.default.saveQueryValues(getSavedQueryKey(view), query);
                 hideLoadingMessage();
             });
         }

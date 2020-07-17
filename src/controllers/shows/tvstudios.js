@@ -23,7 +23,7 @@ define(['loading', 'libraryBrowser', 'cardBuilder', 'apphost'], function (loadin
     }
 
     function getSavedQueryKey() {
-        return libraryBrowser.getSavedQueryKey('studios');
+        return libraryBrowser.default.getSavedQueryKey('studios');
     }
 
     function getPromise(context, params) {
