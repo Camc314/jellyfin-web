@@ -36,6 +36,7 @@
  - [MrTimscampi](https://github.com/MrTimscampi)
  - [Sarab Singh](https://github.com/sarab97)
  - [Andrei Oanca](https://github.com/OancaAndrei)
+ - [Cameron Clark](https://github.com/Camc314)
 
 # Emby Contributors
 
