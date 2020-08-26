@@ -352,7 +352,7 @@ button::-moz-focus-inner {
 .cardDefaultText {
     white-space: normal;
     text-align: center;
-    font-size: 2em;
+    font-size: 1em;
     font-weight: bold;
 }
 
